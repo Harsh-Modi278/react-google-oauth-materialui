@@ -2,6 +2,10 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+Tutorial followed: [blog](https://dev.to/sivaneshs/add-google-login-to-your-react-apps-in-10-mins-4del)
+
+Material-UI: [docs](https://material-ui.com/)
+
 ## Available Scripts
 
 In the project directory, you can run:
