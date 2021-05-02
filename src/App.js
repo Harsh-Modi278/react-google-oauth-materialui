@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { React, useState } from "react";
+import SignIn from "./pages/SignIn.js";
+import { UserContext } from "./UserContext";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
+  const [user, setUser] = useState(
+    JSON.parse(localStorage?.getItem("userObj"))?.profileObj
+  );
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <UserContext.Provider value={{ user, setUser }}>
+          <Switch>
+            <Route exact path="/" component={SignIn}></Route>
+            <Route exact path="/dashboard" component={Dashboard}></Route>
+          </Switch>
+        </UserContext.Provider>
+      </div>
+    </Router>
   );
 }
 
